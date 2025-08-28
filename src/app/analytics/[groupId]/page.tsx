@@ -105,7 +105,10 @@ export default function AnalyticsPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="dashboard-card">
-            <div className="dashboard-header">Most Paid Places</div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🏅</span>
+              <div className="dashboard-header">Most Paid Places</div>
+            </div>
             <div className="dashboard-subtext mb-6">Players with most finishes in the money</div>
             
             <div className="overflow-x-auto">
@@ -158,7 +161,10 @@ export default function AnalyticsPage() {
           </div>
 
           <div className="dashboard-card">
-            <div className="dashboard-header">Most Active Players</div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🏃</span>
+              <div className="dashboard-header">Most Active Players</div>
+            </div>
             <div className="dashboard-subtext mb-6">Players by tournament participation</div>
             
             <div className="overflow-x-auto">
@@ -196,7 +202,10 @@ export default function AnalyticsPage() {
           </div>
 
           <div className="dashboard-card">
-            <div className="dashboard-header">Мажоры</div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">💵</span>
+              <div className="dashboard-header">Мажоры</div>
+            </div>
             <div className="dashboard-subtext mb-6">Most profitable players</div>
             
             <div className="overflow-x-auto">
