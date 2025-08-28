@@ -176,7 +176,7 @@ export default function TournamentPage() {
                         {participant.buy_ins}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold text-orange-600">
-                        ${participant.won_amount}
+                        {formatMoney(participant.won_amount, (tournament as any).currency)}
                       </td>
                     </tr>
                   ))}
@@ -224,7 +224,7 @@ export default function TournamentPage() {
                         {participant.place || '—'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900">
-                        ${participant.won_amount}
+                        {formatMoney(participant.won_amount, (tournament as any).currency)}
                       </td>
                     </tr>
                   ))}
