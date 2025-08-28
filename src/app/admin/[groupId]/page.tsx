@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { format } from 'date-fns'
 import { getGroupById, getTournamentsByGroupId, deleteTournament, getPlayersByGroupId, deletePlayerFromGroup } from '@/lib/services'
+import { formatMoney } from '@/lib/currency'
 import type { Group, Tournament } from '@/lib/services'
 
 export default function AdminGroupPage() {
@@ -138,13 +139,13 @@ export default function AdminGroupPage() {
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="font-medium text-gray-900">
-                            Tournament - {format(new Date(tournament.created_at), 'MMM d, yyyy')}
+                            {(tournament as any).name ? (tournament as any).name : 'Tournament'} - {format(new Date(tournament.created_at), 'MMM d, yyyy')}
                           </h3>
                           <div className="text-sm text-gray-600 mt-1 space-y-1">
-                            <p>Buy-in: ${tournament.buy_in}</p>
-                            <p>Prize Pool: ${tournament.prize_pool}</p>
-                            <p>Rake: ${tournament.rake}</p>
-                            {tournament.bounty && <p>Bounty: ${tournament.bounty}</p>}
+                            <p>Buy-in: {formatMoney(tournament.buy_in as any, (tournament as any).currency)}</p>
+                            <p>Prize Pool: {formatMoney(tournament.prize_pool as any, (tournament as any).currency)}</p>
+                            <p>Rake: {formatMoney(tournament.rake as any, (tournament as any).currency)}</p>
+                            {(tournament as any).bounty && <p>Bounty: {formatMoney((tournament as any).bounty, (tournament as any).currency)}</p>}
                           </div>
                         </div>
                         <div>
