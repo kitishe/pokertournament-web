@@ -15,7 +15,7 @@ export default function TournamentPage() {
   const router = useRouter()
   const tournamentId = params.tournamentId as string
   
-  const [tournament, setTournament] = useState<Tournament | null>(null)
+  const [tournament, setTournament] = useState<(Tournament & { name?: string }) | null>(null)
   const [participants, setParticipants] = useState<Participant[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -80,6 +80,9 @@ export default function TournamentPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h1 className="text-2xl font-semibold text-gray-900">Tournament Details</h1>
+              {tournament.name && (
+                <p className="text-gray-900 mt-1 font-medium">{tournament.name}</p>
+              )}
               <p className="text-gray-600 mt-1">
                 {format(new Date(tournament.created_at), 'EEEE, MMMM dd, yyyy')}
               </p>

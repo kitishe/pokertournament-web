@@ -66,6 +66,7 @@ export async function getAllParticipantsByGroupId(groupId: string) {
     .select(`
       *,
       tournaments!inner (
+        name,
         group_id,
         created_at,
         buy_in,
@@ -85,6 +86,7 @@ export async function getAnalyticsData(groupId: string) {
       *,
       tournaments!inner (
         id,
+        name,
         group_id,
         created_at,
         buy_in,

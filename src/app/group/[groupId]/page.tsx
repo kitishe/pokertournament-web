@@ -15,7 +15,7 @@ export default function GroupPage() {
   const router = useRouter()
   const groupId = params.groupId as string
   
-  const [tournaments, setTournaments] = useState<Tournament[]>([])
+  const [tournaments, setTournaments] = useState<(Tournament & { name?: string })[]>([])
   const [group, setGroup] = useState<Group | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -119,6 +119,9 @@ export default function GroupPage() {
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Date
                     </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Name
+                    </th>
                     <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Buy-in
                     </th>
@@ -144,6 +147,9 @@ export default function GroupPage() {
                         <div className="text-sm text-gray-500">
                           {format(new Date(tournament.created_at), 'EEEE')}
                         </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {tournament.name || '—'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-gray-900">
                         ${tournament.buy_in}

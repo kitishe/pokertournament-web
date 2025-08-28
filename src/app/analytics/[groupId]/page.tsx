@@ -315,6 +315,7 @@ export default function AnalyticsPage() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                     <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Participants</th>
                     <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Prize Pool</th>
                   </tr>
@@ -328,6 +329,9 @@ export default function AnalyticsPage() {
                     >
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
                         {format(new Date(tournament.date), 'MMM dd, yyyy')}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                        {tournament.name || '—'}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-center text-sm font-semibold text-orange-600">
                         {tournament.participants}
@@ -355,6 +359,7 @@ export default function AnalyticsPage() {
                   <tr>
                     <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                     <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Prize Pool</th>
+                    <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                     <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Participants</th>
                   </tr>
                 </thead>
@@ -370,6 +375,9 @@ export default function AnalyticsPage() {
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-gray-900">
                         ${tournament.prizePool}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-center text-sm text-gray-900">
+                        {tournament.name || '—'}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-center text-sm text-gray-900">
                         {tournament.participants}
