@@ -3,9 +3,8 @@
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { format } from 'date-fns'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { getAnalyticsData } from '@/lib/services'
 import {
   calculatePlayerStats,
@@ -244,123 +243,125 @@ export default function AnalyticsPage() {
             </div>
           </div>
 
-          <Card className="shadow-lg">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">💸</span>
-                <div>
-                  <CardTitle className="text-xl">Лудики</CardTitle>
-                  <CardDescription className="text-base">Players who spent more but won less</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Player</TableHead>
-                    <TableHead>Spent</TableHead>
-                    <TableHead>Won</TableHead>
-                    <TableHead>Net Loss</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
+          <div className="dashboard-card">
+            <div className="dashboard-header">Лудики</div>
+            <div className="dashboard-subtext mb-6">Players who spent more but won less</div>
+
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Player
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Spent
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Won
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Net Loss
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
                   {ludiki.map((player) => (
-                    <TableRow key={player.name}>
-                      <TableCell className="font-medium">{player.name}</TableCell>
-                      <TableCell>${player.totalSpent}</TableCell>
-                      <TableCell>${player.totalWon}</TableCell>
-                      <TableCell className="text-destructive">
+                    <tr key={player.name}>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {player.name}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
+                        ${player.totalSpent}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
+                        ${player.totalWon}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-red-600">
                         ${Math.abs(player.netProfit)}
-                      </TableCell>
-                    </TableRow>
+                      </td>
+                    </tr>
                   ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
 
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="shadow-lg">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🎪</span>
-                <div>
-                  <CardTitle className="text-xl">Most Visited Tournaments</CardTitle>
-                  <CardDescription className="text-base">Tournaments with highest participation</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Participants</TableHead>
-                    <TableHead>Prize Pool</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {mostVisitedTournaments.map((tournament) => (
-                    <TableRow 
-                      key={tournament.id}
-                      className="cursor-pointer hover:bg-muted/50"
-                      onClick={() => router.push(`/tournament/${tournament.id}`)}
-                    >
-                      <TableCell>
-                        {format(new Date(tournament.date), 'MMM dd, yyyy')}
-                      </TableCell>
-                      <TableCell className="font-medium">{tournament.participants}</TableCell>
-                      <TableCell>${tournament.prizePool}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+          <div className="dashboard-card">
+            <div className="dashboard-header">Most Visited Tournaments</div>
+            <div className="dashboard-subtext mb-6">Tournaments with highest participation</div>
 
-          <Card className="shadow-lg">
-            <CardHeader className="pb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">💎</span>
-                <div>
-                  <CardTitle className="text-xl">Biggest Prize Pools</CardTitle>
-                  <CardDescription className="text-base">Tournaments with the largest prize pools</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Prize Pool</TableHead>
-                    <TableHead>Participants</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {biggestPrizePools.map((tournament) => (
-                    <TableRow 
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Participants</th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Prize Pool</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {mostVisitedTournaments.map((tournament) => (
+                    <tr
                       key={tournament.id}
-                      className="cursor-pointer hover:bg-muted/50"
+                      className="cursor-pointer"
                       onClick={() => router.push(`/tournament/${tournament.id}`)}
                     >
-                      <TableCell>
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
                         {format(new Date(tournament.date), 'MMM dd, yyyy')}
-                      </TableCell>
-                      <TableCell className="font-bold text-lg">
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-center text-sm font-semibold text-orange-600">
+                        {tournament.participants}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
                         ${tournament.prizePool}
-                      </TableCell>
-                      <TableCell>{tournament.participants}</TableCell>
-                    </TableRow>
+                      </td>
+                    </tr>
                   ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="dashboard-card">
+            <div className="dashboard-header">Biggest Prize Pools</div>
+            <div className="dashboard-subtext mb-6">Tournaments with the largest prize pools</div>
+
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Prize Pool</th>
+                    <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Participants</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {biggestPrizePools.map((tournament) => (
+                    <tr
+                      key={tournament.id}
+                      className="cursor-pointer"
+                      onClick={() => router.push(`/tournament/${tournament.id}`)}
+                    >
+                      <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                        {format(new Date(tournament.date), 'MMM dd, yyyy')}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-gray-900">
+                        ${tournament.prizePool}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap text-center text-sm text-gray-900">
+                        {tournament.participants}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
