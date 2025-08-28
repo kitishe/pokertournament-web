@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { getTournamentsByGroupId, getGroupById } from '@/lib/services'
+import { formatMoney } from '@/lib/currency'
 import { Tournament, Group } from '@/lib/services'
 
 export default function GroupPage() {
@@ -152,13 +153,13 @@ export default function GroupPage() {
                         {tournament.name || '—'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-gray-900">
-                        ${tournament.buy_in}
+                        {formatMoney(tournament.buy_in, (tournament as any).currency)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">
-                        {tournament.bounty ? `$${tournament.bounty}` : '—'}
+                        {tournament.bounty ? formatMoney(tournament.bounty, (tournament as any).currency) : '—'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold text-orange-600">
-                        ${tournament.prize_pool}
+                        {formatMoney(tournament.prize_pool, (tournament as any).currency)}
                       </td>
                     </tr>
                   ))}

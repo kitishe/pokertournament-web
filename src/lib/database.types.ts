@@ -44,6 +44,8 @@ export interface Database {
           bounty_pool: number | null
           regular_pool: number | null
           payouts_json: Json | null
+          currency?: string | null
+          name?: string | null
         }
         Insert: {
           id?: string
@@ -56,6 +58,8 @@ export interface Database {
           bounty_pool?: number | null
           regular_pool?: number | null
           payouts_json?: Json | null
+          currency?: string | null
+          name?: string | null
         }
         Update: {
           id?: string
@@ -68,6 +72,8 @@ export interface Database {
           bounty_pool?: number | null
           regular_pool?: number | null
           payouts_json?: Json | null
+          currency?: string | null
+          name?: string | null
         }
       }
       participants: {

@@ -13,6 +13,7 @@ export interface TournamentStats {
   participants: number
   prizePool: number
   name?: string
+  currency?: string
 }
 
 export function calculatePlayerStats(participants: any[]): PlayerStats[] {
@@ -87,7 +88,8 @@ export function getTournamentStats(participants: any[]): TournamentStats[] {
         date: tournament.created_at,
         participants: 0,
         prizePool: tournament.prize_pool,
-        name: tournament.name
+        name: tournament.name,
+        currency: tournament.currency
       })
     }
 

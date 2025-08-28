@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { getTournamentById, getParticipantsByTournamentId } from '@/lib/services'
 import { Tournament, Participant } from '@/lib/services'
+import { formatMoney } from '@/lib/currency'
 
 export default function TournamentPage() {
   const params = useParams()
@@ -118,17 +119,17 @@ export default function TournamentPage() {
 
           <div className="dashboard-card">
             <div className="dashboard-header">Prize Pool</div>
-            <div className="dashboard-metric text-orange-600">${tournament.prize_pool}</div>
-            <div className="dashboard-subtext">Buy-in: ${tournament.buy_in}</div>
+            <div className="dashboard-metric text-orange-600">{formatMoney(tournament.prize_pool, (tournament as any).currency)}</div>
+            <div className="dashboard-subtext">Buy-in: {formatMoney(tournament.buy_in, (tournament as any).currency)}</div>
           </div>
 
           <div className="dashboard-card">
             <div className="dashboard-header">Bounty Pool</div>
             <div className="dashboard-metric">
-              {tournament.bounty_pool ? `$${tournament.bounty_pool}` : 'N/A'}
+              {tournament.bounty_pool ? formatMoney(tournament.bounty_pool, (tournament as any).currency) : 'N/A'}
             </div>
             <div className="dashboard-subtext">
-              {tournament.bounty ? `$${tournament.bounty} each` : 'No bounties'}
+              {tournament.bounty ? `${formatMoney(tournament.bounty, (tournament as any).currency)} each` : 'No bounties'}
             </div>
           </div>
         </div>

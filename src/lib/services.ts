@@ -52,7 +52,12 @@ export async function getTournamentById(tournamentId: string) {
 export async function getParticipantsByTournamentId(tournamentId: string) {
   const { data, error } = await supabase
     .from('participants')
-    .select('*')
+    .select(`
+      *,
+      tournaments!inner (
+        currency
+      )
+    `)
     .eq('tournament_id', tournamentId)
     .order('place', { ascending: true, nullsFirst: false })
   
@@ -70,7 +75,8 @@ export async function getAllParticipantsByGroupId(groupId: string) {
         group_id,
         created_at,
         buy_in,
-        prize_pool
+        prize_pool,
+        currency
       )
     `)
     .eq('tournaments.group_id', groupId)
@@ -90,7 +96,8 @@ export async function getAnalyticsData(groupId: string) {
         group_id,
         created_at,
         buy_in,
-        prize_pool
+        prize_pool,
+        currency
       )
     `)
     .eq('tournaments.group_id', groupId)

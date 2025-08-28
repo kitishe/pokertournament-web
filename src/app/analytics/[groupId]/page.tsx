@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { format } from 'date-fns'
 import { Card, CardContent } from '@/components/ui/card'
+import { formatMoney } from '@/lib/currency'
 import { Button } from '@/components/ui/button'
 import { getAnalyticsData } from '@/lib/services'
 import {
@@ -82,6 +83,7 @@ export default function AnalyticsPage() {
   const ludiki = getLudiki(playerStats)
   const mostVisitedTournaments = getMostVisitedTournaments(tournamentStats)
   const biggestPrizePools = getBiggestPrizePools(tournamentStats)
+  const groupCurrency = (tournamentStats && tournamentStats.length > 0) ? (tournamentStats[0] as any).currency : undefined
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -192,7 +194,7 @@ export default function AnalyticsPage() {
                         {player.tournaments}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
-                        ${player.totalSpent}
+                        {formatMoney(player.totalSpent, groupCurrency)}
                       </td>
                     </tr>
                   ))}
@@ -237,13 +239,13 @@ export default function AnalyticsPage() {
                           {player.name}
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
-                          ${player.totalSpent}
+                          {formatMoney(player.totalSpent, groupCurrency)}
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
-                          ${player.totalWon}
+                          {formatMoney(player.totalWon, groupCurrency)}
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-green-600">
-                          +${player.netProfit}
+                          +{formatMoney(player.netProfit, groupCurrency)}
                         </td>
                       </tr>
                     ))}
@@ -284,13 +286,13 @@ export default function AnalyticsPage() {
                         {player.name}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
-                        ${player.totalSpent}
+                        {formatMoney(player.totalSpent, groupCurrency)}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
-                        ${player.totalWon}
+                        {formatMoney(player.totalWon, groupCurrency)}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-red-600">
-                        ${Math.abs(player.netProfit)}
+                        {formatMoney(Math.abs(player.netProfit), groupCurrency)}
                       </td>
                     </tr>
                   ))}
@@ -337,7 +339,7 @@ export default function AnalyticsPage() {
                         {tournament.participants}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900">
-                        ${tournament.prizePool}
+                        {formatMoney(tournament.prizePool, (tournament as any).currency)}
                       </td>
                     </tr>
                   ))}
@@ -374,7 +376,7 @@ export default function AnalyticsPage() {
                         {format(new Date(tournament.date), 'MMM dd, yyyy')}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-gray-900">
-                        ${tournament.prizePool}
+                        {formatMoney(tournament.prizePool, (tournament as any).currency)}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-center text-sm text-gray-900">
                         {tournament.name || '—'}
