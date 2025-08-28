@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl leading-none">🏅</span>
-              <div className="dashboard-header text-2xl leading-none mb-0 relative -top-[1px]">Most Paid Places</div>
+              <div className="dashboard-header text-2xl leading-none mb-0">Most Paid Places</div>
             </div>
             <div className="dashboard-subtext mb-6">Players with most finishes in the money</div>
             
@@ -165,7 +165,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl leading-none">🏃</span>
-              <div className="dashboard-header text-2xl leading-none mb-0 relative -top-[1px]">Most Active Players</div>
+              <div className="dashboard-header text-2xl leading-none mb-0">Most Active Players</div>
             </div>
             <div className="dashboard-subtext mb-6">Players by tournament participation</div>
             
@@ -206,7 +206,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl leading-none">💵</span>
-              <div className="dashboard-header text-2xl leading-none mb-0 relative -top-[1px]">Мажоры</div>
+              <div className="dashboard-header text-2xl leading-none mb-0">Мажоры</div>
             </div>
             <div className="dashboard-subtext mb-6">Most profitable players</div>
             
@@ -257,7 +257,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl leading-none">💸</span>
-              <div className="dashboard-header text-2xl leading-none mb-0 relative -top-[1px]">Лудики</div>
+              <div className="dashboard-header text-2xl leading-none mb-0">Лудики</div>
             </div>
             <div className="dashboard-subtext mb-6">Players who spent more but won less</div>
 
@@ -308,7 +308,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl leading-none">🎪</span>
-              <div className="dashboard-header text-2xl leading-none mb-0 relative -top-[1px]">Most Visited Tournaments</div>
+              <div className="dashboard-header text-2xl leading-none mb-0">Most Visited Tournaments</div>
             </div>
             <div className="dashboard-subtext mb-6">Tournaments with highest participation</div>
 
@@ -351,7 +351,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl leading-none">💎</span>
-              <div className="dashboard-header text-2xl leading-none mb-0 relative -top-[1px]">Biggest Prize Pools</div>
+              <div className="dashboard-header text-2xl leading-none mb-0">Biggest Prize Pools</div>
             </div>
             <div className="dashboard-subtext mb-6">Tournaments with the largest prize pools</div>
 
