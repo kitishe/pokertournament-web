@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🏅</span>
-              <div className="dashboard-header">Most Paid Places</div>
+              <div className="dashboard-header text-2xl">Most Paid Places</div>
             </div>
             <div className="dashboard-subtext mb-6">Players with most finishes in the money</div>
             
@@ -165,7 +165,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🏃</span>
-              <div className="dashboard-header">Most Active Players</div>
+              <div className="dashboard-header text-2xl">Most Active Players</div>
             </div>
             <div className="dashboard-subtext mb-6">Players by tournament participation</div>
             
@@ -206,7 +206,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl">💵</span>
-              <div className="dashboard-header">Мажоры</div>
+              <div className="dashboard-header text-2xl">Мажоры</div>
             </div>
             <div className="dashboard-subtext mb-6">Most profitable players</div>
             
@@ -257,7 +257,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl">💸</span>
-              <div className="dashboard-header">Лудики</div>
+              <div className="dashboard-header text-2xl">Лудики</div>
             </div>
             <div className="dashboard-subtext mb-6">Players who spent more but won less</div>
 
@@ -292,7 +292,7 @@ export default function AnalyticsPage() {
                         {formatMoney(player.totalWon, groupCurrency)}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-semibold text-red-600">
-                        {formatMoney(Math.abs(player.netProfit), groupCurrency)}
+                        -{formatMoney(Math.abs(player.netProfit), groupCurrency)}
                       </td>
                     </tr>
                   ))}
@@ -308,7 +308,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🎪</span>
-              <div className="dashboard-header">Most Visited Tournaments</div>
+              <div className="dashboard-header text-2xl">Most Visited Tournaments</div>
             </div>
             <div className="dashboard-subtext mb-6">Tournaments with highest participation</div>
 
@@ -351,7 +351,7 @@ export default function AnalyticsPage() {
           <div className="dashboard-card">
             <div className="flex items-center gap-2">
               <span className="text-2xl">💎</span>
-              <div className="dashboard-header">Biggest Prize Pools</div>
+              <div className="dashboard-header text-2xl">Biggest Prize Pools</div>
             </div>
             <div className="dashboard-subtext mb-6">Tournaments with the largest prize pools</div>
 
